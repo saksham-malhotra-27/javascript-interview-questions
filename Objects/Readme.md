@@ -8,7 +8,7 @@ The prototype chain is a series of links between objects and their prototypes.
 + This chain enables inheritance.
 
 ### 2. prototype property on functions ( constructors )
-+ The prototype property exists on functions only, specifically constructor functions, and is used as a blueprint for objects created by the function.
++ The prototype property exists on functions only, (classes as well) specifically constructor functions, and is used as a blueprint for objects created by the function.
 + Objects created with new inherit from the constructor function’s prototype.
 
 ### 3. __proto__ Property
@@ -64,4 +64,25 @@ then, Any changes to Car.prototype will affect Vehicle.prototype (and vice versa
 Any methods added to Car.prototype will also appear in Vehicle.prototype.
 This destroys the separation of concerns between Car and Vehicle.
 
+
+### 7. Difference between call and protoype object create
+
+#### What call is Doing
+
++ When you use people.call(this, name, dob) inside the GoodPeople constructor, it copies properties from people into the new GoodPeople instance. Specifically, it:
+
++ Invokes the people function in the context of the GoodPeople instance (this).
+
++ Assigns the properties (name and dob) defined in the people constructor to the new GoodPeople instance.
+
++ It works as `super` but for function inheritance. `apply` and `bind` also works like that.
+
+So, call is directly assigning name and dob as properties on the GoodPeople instance. But, it does NOT establish a connection between GoodPeople and people.prototype.
+
+#### What Object.create is Doing
++ The line `GoodPeople.prototype = Object.create(people.prototype)` establishes the prototype chain. This allows instances of GoodPeople to inherit methods from people.prototype.
+
+While call sets instance-specific properties (name, dob), Object.create ensures that any methods or properties defined on people.prototype are available to GoodPeople instances.
+
+Basically, calls make sure the properties are there, but it doesn't make sure for the methods and to access the properties , we're gonna need methods since it's functions. so we need to have object.create work as well.
 

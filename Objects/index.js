@@ -59,9 +59,24 @@ Vehicle.prototype.start = function(){
 
 function Car(type, brand){
     Vehicle.call(this, type);
-    
+
     this.brand = brand;
 }
 
 Car.prototype = Object.create(Vehicle.prototype)
 Car.prototype.constructor=Car; 
+
+//7
+function people(name, dob){
+    this.name = name 
+    this.dob  = dob 
+}
+
+function GoodPeople(age, name, dob) {
+    people.call(this, name, dob)
+    this.age = age; 
+}
+
+GoodPeople.prototype = Object.create(people.prototype)
+GoodPeople.prototype.constructor = GoodPeople
+

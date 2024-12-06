@@ -33,7 +33,7 @@ It allows Car instances to "borrow" Vehicle's constructor and assign the type pr
 
 It is assigned directly in the Car constructor.
 
-+Do Car or Vehicle have a brand property?
++ Do Car or Vehicle have a brand property?
 
 Vehicle: No.
 Car: Only Car instances have brand as an own property.

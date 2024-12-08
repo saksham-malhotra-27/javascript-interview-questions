@@ -95,10 +95,13 @@ Basically, calls make sure the properties are there, but it doesn't make sure fo
 + Mixins are a way to add functionality to a class by mixing in behavior from multiple sources, without using inheritance. Instead of creating a deep class hierarchy, you compose a class by adding behavior from different objects.
 + Mixins can be used to share methods across classes or add functionality to objects dynamically.
 + Use `Object.assign(obj.prototype, methods, ...)`
-
++ Assigning prototypes only deals with shared methods 
++ You still need to call constructor 
 #### Composition:
 + Composition is a design principle where you build objects by combining simpler components, rather than using inheritance. This approach promotes reusability and flexibility.
 + Instead of relying on a rigid inheritance chain, you can combine different behaviors or features in objects as needed.
++ You still need to call constructor 
+
 #### Differences 
 ##### Mixin:
 1. Involves adding methods from one object (e.g., o1, o2) to another object or class.
@@ -110,3 +113,22 @@ Basically, calls make sure the properties are there, but it doesn't make sure fo
 2. No prototype chain: It doesn't modify the prototype chain but instead combines the behaviors and properties of objects without creating an inheritance structure.
 3. More flexible: Composition allows you to mix and match different behaviors and doesn't tie you to an inheritance model, making it more modular and reusable.
 4. In composition, prototype chaining can still occur depending on how it's implemented, but it works differently compared to inheritance through mixins.
+
+
+### 10. call(), apply(), bind():
+
+- **call()**:
+  - Invokes the function immediately.
+  - Accepts arguments passed individually (comma-separated).
+  - The first argument is the context (`this`).
+
+- **apply()**:
+  - Invokes the function immediately.
+  - Accepts arguments as an array (or an array-like object).
+  - The first argument is the context (this).
+
+- **bind()**:
+
+  - Does not invoke the function immediately.
+  - Returns a new function with the this context and arguments bound.
+  - The new function can be called later with or without additional arguments.

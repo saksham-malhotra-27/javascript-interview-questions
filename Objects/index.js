@@ -127,6 +127,7 @@ function main(age){
 }
 
 Object.assign(main.prototype, o1, o2);
+// Note: assigning prototypes only deals with shared methods 
 // if u did assign to main, not main's prototype, then, 
 //  o1 and o2 only members will be associated not methods 
 // as main is a constructor not prototype
@@ -145,3 +146,19 @@ b.writeName('saksham');
 
 const c2 = new main2(12, [o1, o2]);
 c2.writeName('saksham')
+
+//10 call, apply, bind 
+
+function greet(name, age){
+    console.log(`${this.firstName} ${age} ${name}`)
+}
+const person = {
+    firstName: "saksham"
+}
+greet.call(person, 's', 12)
+
+greet.apply(person, ['sasa', 20])
+
+const newFunc = greet.bind(person, 'saks', 20)
+
+newFunc();
